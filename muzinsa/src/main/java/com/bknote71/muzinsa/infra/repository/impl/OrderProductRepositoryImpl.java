@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Repository
@@ -19,7 +20,11 @@ public class OrderProductRepositoryImpl implements OrderProductRepository {
         return repository.save(orderProduct);
     }
 
-    @Override public void delete(Long orderProductId) {
-        repository.deleteById(orderProductId);
+    @Override public void delete(Long id) {
+        repository.deleteById(id);
+    }
+
+    @Override public Optional<OrderProduct> findById(Long id) {
+        return repository.findById(id);
     }
 }

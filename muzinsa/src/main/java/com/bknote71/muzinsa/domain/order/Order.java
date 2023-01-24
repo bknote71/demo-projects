@@ -34,8 +34,9 @@ public class Order extends BaseEntity {
     private OrderStatus orderStatus;
 
     @Builder
-    public Order(List<OrderProduct> orderProducts, DeliveryInfo deliveryInfo, OrderStatus orderStatus) {
+    public Order(List<OrderProduct> orderProducts, Orderer orderer, DeliveryInfo deliveryInfo, OrderStatus orderStatus) {
         this.orderProducts = orderProducts;
+        this.orderer = orderer;
         this.deliveryInfo = deliveryInfo;
         this.orderStatus = orderStatus;
     }

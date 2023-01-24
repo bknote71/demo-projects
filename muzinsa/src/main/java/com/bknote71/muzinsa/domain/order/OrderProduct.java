@@ -44,4 +44,8 @@ public class OrderProduct {
     public int getOrderPrice() {
         return price * quantity;
     }
+
+    public void setCouponId(Long couponId) {
+        this.couponId = this.couponId;
+    }
 }

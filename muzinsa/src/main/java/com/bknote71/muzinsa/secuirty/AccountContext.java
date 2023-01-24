@@ -19,4 +19,8 @@ public class AccountContext extends User {
     public Account account() {
         return account;
     }
+
+    public Long accountId() {
+        return account.getId();
+    }
 }

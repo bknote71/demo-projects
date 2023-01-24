@@ -24,17 +24,16 @@ public class OrderController {
 
     @PostMapping("/put") // 주문하기 == 장바구니 담기
     public OrderProductDto put(OrderProductDto orderProductDto, @AuthenticationPrincipal AccountContext ac) {
-        Account account = ac.account();
-        Long accountId = account.getId();
-        return orderProductCommandService.put(orderProductDto, accountId);
+        return orderProductCommandService.put(orderProductDto, ac.accountId());
     }
 
     @PostMapping("/pay")
-    public OrderDto orderPay(@RequestBody OrderPayRequest orderPayRequest) {
+    public OrderDto orderPay(@RequestBody OrderPayRequest orderPayRequest, @AuthenticationPrincipal AccountContext ac) {
         orderService.placeOrder(
                 orderPayRequest.getDeliveryInfo(),
                 orderPayRequest.getOrderProductDtos(),
-                orderPayRequest.getPaidAmount());
+                orderPayRequest.getPaidAmount(),
+                ac.accountId());
 
         return null;
     }
