@@ -1,0 +1,37 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      console:
+        path: /h2-console
+      settings:
+        web-allow-others: true
+---
+spring:
+  datasource:
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+
+logging:
+  level:
+    org:
+#      hibernate:
+#        SQL:
+#          debug
+#        type:
+#          descriptor:
+#            sql:
+#              BasicBinder: debug
+      springframework:
+        transaction: DEBUG
+        orm:
+          jpa: DEBUG

@@ -1,0 +1,63 @@
+spring:
+  profiles:
+    active: mysql
+
+spring.batch.job.names: ${job.name:NONE}
+---
+
+
+spring:
+#  session:
+#    storage-type: redis
+  redis:
+    host: localhost
+    port: 6379
+
+---
+spring:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    #    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 500
+---
+spring:
+  config:
+    activate:
+      on-profiles: test
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username:
+    password:
+---
+spring:
+  config:
+    activate:
+      on-profiles: mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/muzinsa?rewriteBatchedStatements=true&profileSQL=true&logger=Slf4JLogger&maxQuerySizeToLog=999999
+    username: root
+    password:
+
+---
+
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: foo
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
