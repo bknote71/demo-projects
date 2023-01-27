@@ -28,7 +28,7 @@ public class Order extends BaseEntity {
     @Embedded
     private DeliveryInfo deliveryInfo;
     private int totalPrice; // 오더프로덕트 list의 price * quantity 합한 값
-    private int finalPrice;
+    private int orderPrice;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
@@ -65,4 +65,7 @@ public class Order extends BaseEntity {
         orderStatus = OrderStatus.PREPARING;
     }
 
+    public void setOrderPrice(int finalAmount) {
+        this.orderPrice = finalAmount;
+    }
 }

@@ -46,6 +46,6 @@ public class OrderProduct {
     }
 
     public void setCouponId(Long couponId) {
-        this.couponId = this.couponId;
+        this.couponId = couponId;
     }
 }

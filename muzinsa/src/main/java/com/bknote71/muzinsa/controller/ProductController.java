@@ -26,8 +26,8 @@ public class ProductController {
 
     // 수정: 제품 상태 변경, 이름 변경, 가격 변경, 수량 변경, 소개 변경, 옵션 변경
     // --> 일일히 change 메소드 호출 ㄱㄱ
-    @PostMapping("/change")
-    public ProductDto change(@RequestBody ProductDto dto) {
+    @PostMapping("/update")
+    public ProductDto update(@RequestBody ProductDto dto) {
         // productId 는 필수
         if (dto.getProductId() == null) {
             throw new NullPointerException("id가 null 입니다.");
@@ -37,7 +37,7 @@ public class ProductController {
     }
 
     @PostMapping("/sub/{productId}")
-    public Boolean alarm(Long productId, @AuthenticationPrincipal AccountContext ac) {
+    public Boolean subscription(Long productId, @AuthenticationPrincipal AccountContext ac) {
         Account account = ac.account();
         return productService.subscribeRestockAlarm(productId, account);
     }

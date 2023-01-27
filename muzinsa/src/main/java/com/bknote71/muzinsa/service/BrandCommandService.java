@@ -13,11 +13,11 @@ public class BrandCommandService {
     private final BrandRepository brandRepository;
 
     public Long register(BrandDto dto) {
-        checkIfBrandNameExists(dto.getName());
+        checkIfBrandNameExists(dto.getBrandname());
 
         Brand brand = Brand.builder()
                 .categoryId(dto.getCategoryId())
-                .name(dto.getName())
+                .brandname(dto.getBrandname())
                 .url(dto.getUrl())
                 .companyname(dto.getCompanyname())
                 .eid(dto.getEid())

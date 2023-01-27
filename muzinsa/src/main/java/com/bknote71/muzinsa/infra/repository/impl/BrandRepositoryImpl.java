@@ -26,6 +26,6 @@ public class BrandRepositoryImpl implements BrandRepository {
     }
 
     @Override public Optional<Brand> findByName(String name) {
-        return repository.findByName(name);
+        return repository.findByBrandname(name);
     }
 }

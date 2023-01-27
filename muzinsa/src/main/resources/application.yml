@@ -19,9 +19,9 @@ spring:
     console:
       enabled: true
   jpa:
-    show-sql: true
+    # show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     properties:
       hibernate:
         format_sql: true
@@ -43,7 +43,7 @@ spring:
       on-profiles: mysql
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/muzinsa?rewriteBatchedStatements=true&profileSQL=true&&maxQuerySizeToLog=999999
+    url: jdbc:mysql://localhost:3306/muzinsa?rewriteBatchedStatements=false&profileSQL=false&&maxQuerySizeToLog=999999
     # logger=Slf4JLogger << 쿼리파라미터 옵션
     username: root
     password:

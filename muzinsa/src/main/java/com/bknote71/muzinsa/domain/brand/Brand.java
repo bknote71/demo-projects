@@ -11,16 +11,19 @@ import javax.persistence.*;
 @Getter @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "BRAND", indexes = {
+        @Index(name = "idx__categoryId", columnList = "categoryId"),
+        @Index(name = "idx__brandname", columnList = "brandname")
+})
 @Entity
 public class Brand {
 
     @Id @GeneratedValue
     @Column(name = "BRAND_ID")
     private Long id;
-
     // essential
     private Long categoryId;
-    private String name;
+    private String brandname;
     private String url;
     private String companyname;
     private String eid; // employer id number: 사업자 등록 번호

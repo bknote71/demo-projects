@@ -33,14 +33,14 @@ public class Product extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ProductStatus productStatus;
 
-    public void verifyIfYouCanBuyThis(int quantity) {
+    public void buy(int quantity) {
         if (!isOnSale()) {
             throw new IllegalStateException("판매중인 상품이 아닙니다");
         }
-
         if (!hasStockMoreThanQuantity(quantity)) {
             throw new IllegalArgumentException(quantity + " 개 만큼 사기에는 재고가 부족합니다. 현재 재고 : " + stock);
         }
+        this.stock -= quantity;
     }
 
     public boolean isOnSale() {

@@ -1,12 +1,9 @@
 package com.bknote71.muzinsa.dto;
 
-import com.bknote71.muzinsa.domain.Address;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.Embedded;
 
 @Getter @Setter
 @NoArgsConstructor
@@ -15,7 +12,7 @@ public class BrandDto {
 
     // essential
     private Long categoryId;
-    private String name;
+    private String brandname;
     private String url;
     private String companyname;
     private String eid; // employer id number: 사업자 등록 번호
