@@ -84,6 +84,7 @@ public class DailySalesAggregationByProductJobConfiguration {
     /**
      * select op.productId, sum(op.quantity), sum(op.price)  from OrderProduct op
      * where op.order.createdAt between startDate and endDate groupBy op.productId
+     * join Order o on o.orderStatus = DELIVERY_COMPLETED
      */
 
     private ItemProcessor<? super Order, ? extends ProductSalesHistory> processor() {
